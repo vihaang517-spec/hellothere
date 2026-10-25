@@ -1,0 +1,686 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#fff0f7">
+<title>Just for Ishita 💗</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 12px;
+  overflow-x: hidden;
+  font-family: "Segoe UI", sans-serif;
+  color: #75415d;
+  background:
+    radial-gradient(circle at 10% 10%, #ffc5df, transparent 40%),
+    radial-gradient(circle at 90% 90%, #d9c5ff, transparent 40%),
+    linear-gradient(135deg, #fff0f7, #fff9fc, #f1e7ff);
+}
+
+#hearts {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.heart {
+  position: absolute;
+  bottom: -50px;
+  animation: floatUp linear forwards;
+  opacity: 0;
+}
+
+@keyframes floatUp {
+  0% { transform: translateY(0) rotate(0); opacity: 0; }
+  15% { opacity: .8; }
+  100% { transform: translateY(-115vh) rotate(360deg); opacity: 0; }
+}
+
+.card {
+  position: relative;
+  z-index: 2;
+  width: min(100%, 590px);
+  padding: clamp(25px, 6vw, 43px);
+  text-align: center;
+  border: 1px solid #ffffffd9;
+  border-radius: 30px;
+  background: #ffffffc9;
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+  box-shadow: 0 24px 80px #ab497e20;
+  animation: appear .8s ease both;
+}
+
+@keyframes appear {
+  from { opacity: 0; transform: translateY(25px) scale(.96); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.top-label {
+  display: inline-block;
+  padding: 9px 15px;
+  margin-bottom: 22px;
+  border: 1px solid #f7d8e7;
+  border-radius: 30px;
+  background: #fff7fb;
+  color: #b85b88;
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.heart-icon {
+  font-size: 68px;
+  margin-bottom: 15px;
+  animation: beat 1.5s infinite;
+}
+
+@keyframes beat {
+  0%, 100% { transform: scale(1); }
+  15% { transform: scale(1.15); }
+  30% { transform: scale(1); }
+  45% { transform: scale(1.09); }
+}
+
+h1 {
+  color: #e84393;
+  font-size: clamp(29px, 7vw, 42px);
+  line-height: 1.25;
+}
+
+.subtitle {
+  margin: 16px auto 12px;
+  color: #a35b80;
+  line-height: 1.8;
+  font-size: 16px;
+}
+
+.question {
+  margin: 22px 0;
+  color: #c7377d;
+  font-size: clamp(22px, 5vw, 29px);
+  font-weight: 750;
+  line-height: 1.5;
+}
+
+.button-area {
+  position: relative;
+  min-height: 110px;
+  margin-top: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+button {
+  font-family: inherit;
+  font-weight: 750;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.choice {
+  min-height: 50px;
+  padding: 14px 26px;
+  border: none;
+  border-radius: 15px;
+  font-size: 16px;
+  transition:
+    transform .25s ease,
+    box-shadow .25s ease;
+}
+
+#yes {
+  position: relative;
+  z-index: 3;
+  color: white;
+  background: linear-gradient(135deg, #ff64a6, #e42c7c);
+  box-shadow: 0 8px 24px #e8439350;
+}
+
+#yes:hover {
+  box-shadow: 0 12px 30px #e8439370;
+}
+
+#no {
+  position: relative;
+  z-index: 4;
+  color: #a34b74;
+  background: white;
+  border: 1px solid #f2c5d9;
+}
+
+.footer {
+  margin-top: 20px;
+  color: #bd81a0;
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+.tools {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.tool-btn {
+  padding: 10px 14px;
+  border: 1px solid #f0d4e3;
+  border-radius: 12px;
+  background: white;
+  color: #975478;
+  font-size: 13px;
+}
+
+#status {
+  min-height: 20px;
+  margin-top: 10px;
+  color: #a35b80;
+  font-size: 12px;
+}
+
+#letter {
+  text-align: left;
+  animation: appear .8s ease both;
+}
+
+#letter h1,
+#letter .letter-subtitle {
+  text-align: center;
+}
+
+.message-box {
+  margin-top: 25px;
+  padding: clamp(18px, 4vw, 27px);
+  border: 1px solid #f6d6e5;
+  border-radius: 22px;
+  background: linear-gradient(145deg, #fffafd, #fff0f7);
+  font-size: 15.5px;
+  line-height: 1.95;
+}
+
+.message-box p {
+  margin-bottom: 17px;
+}
+
+.message-box p:last-child {
+  margin-bottom: 0;
+}
+
+.greeting {
+  color: #c7377d;
+  font-weight: bold;
+}
+
+.signature {
+  text-align: right;
+  color: #e84393;
+  font-weight: bold;
+}
+
+.hidden {
+  display: none !important;
+}
+
+#letter .heart-icon {
+  text-align: center;
+}
+
+.letter-footer {
+  margin-top: 20px;
+  text-align: center;
+  color: #bd81a0;
+  font-size: 12px;
+}
+
+@media (max-width: 480px) {
+  .card {
+    padding: 25px 17px;
+    border-radius: 25px;
+  }
+
+  .button-area {
+    gap: 12px;
+    min-height: 100px;
+  }
+
+  .choice {
+    padding: 13px 20px;
+  }
+
+  .message-box {
+    padding: 18px 15px;
+    font-size: 14.5px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div id="hearts" aria-hidden="true"></div>
+
+<main class="card" id="card">
+
+  <!-- SCREEN 1: THE QUESTION -->
+  <section id="questionScreen">
+
+    <div class="top-label">♡ A little question for you ♡</div>
+
+    <div class="heart-icon">💗</div>
+
+    <h1>Hey Ishita! 🥹</h1>
+
+    <p class="subtitle">
+      Okay, so I've been wanting to ask you something...
+      and I'm honestly a little nervous. 🙈
+    </p>
+
+    <div class="question">
+      Do you like me? 💖
+    </div>
+
+    <p class="subtitle">
+      Just one little question, with a lot of feelings behind it. 💌
+    </p>
+
+    <div class="button-area" id="buttonArea">
+      <button class="choice" id="yes">YES! 💖</button>
+      <button class="choice" id="no">No 🙈</button>
+    </div>
+
+    <div class="tools">
+      <button class="tool-btn" id="musicBtn">♫ Play music</button>
+      <button class="tool-btn" id="shareBtn">↗ Share page</button>
+    </div>
+
+    <div id="status" role="status" aria-live="polite"></div>
+
+    <div class="footer">
+      Made with a little courage and a lot of feelings 💌
+    </div>
+  </section>
+
+  <!-- SCREEN 2: THE LONG MESSAGE -->
+  <section id="messageScreen" class="hidden">
+
+    <div class="heart-icon">🥹💗</div>
+
+    <h1>Wait... You said YES?! 😭❤️</h1>
+
+    <p class="subtitle letter-subtitle">
+      Okay, now let me tell you something I've been keeping in my heart...
+    </p>
+
+    <article class="message-box" id="letter">
+
+      <p class="greeting">Hey Ishita ❤️,</p>
+
+      <p>
+        Honestly, I don't even know how to explain what I'm feeling
+        right now. I've imagined telling you this so many times,
+        but actually doing it is a completely different thing.
+        I was nervous about what you might say, and I kept thinking
+        about whether I should tell you or just keep it to myself.
+        But here I am, finally being honest with you. 🥹
+      </p>
+
+      <p>
+        I don't know exactly when you became someone so special to me.
+        Maybe it happened through the little things, the conversations,
+        your smile, or just the way you somehow make an ordinary day
+        feel a little better. It's funny how one person can make you
+        smile just by coming into your thoughts. And somehow, you've
+        become that person for me. 💕
+      </p>
+
+      <p>
+        Sometimes, I catch myself thinking about you for absolutely
+        no reason. I remember little things, imagine conversations,
+        and find myself smiling at my phone like a complete idiot.
+        And then I realise that, yep, it's you again. I might not
+        always know how to express it properly, but my feelings for
+        you are genuine.
+      </p>
+
+      <p>
+        I like you, Ishita. Not because I expect you to be perfect,
+        and not because I want some dramatic movie-style love story.
+        I like you for being you. There's something about you that
+        makes me want to know you better, talk to you more, and make
+        more happy memories with you. Even the simplest moments
+        would mean a lot if I got to share them with you. ❤️
+      </p>
+
+      <p>
+        And I want you to know that I'm not expecting everything to
+        happen all at once. I don't want to rush anything or make
+        things awkward between us. I'd rather we get to know each
+        other naturally, laugh together, share our thoughts, and see
+        where life takes us. I just wanted to be brave enough to let
+        you know what's been going on in my heart.
+      </p>
+
+      <p>
+        So, if your YES really means that you like me too, then
+        honestly, you've made me happier than you probably realise.
+        I can't promise to be perfect, because nobody is, but I can
+        promise to be genuine, to listen, to respect you, and to
+        appreciate the little things that make you who you are. 🫶
+      </p>
+
+      <p>
+        Thank you for reading all of this. I know it's a lot, and
+        maybe I'm being a little cheesy, but sometimes the heart has
+        a lot to say and doesn't know how to keep it short. I just
+        hope this brings a smile to your face, because making you
+        smile would honestly be a pretty wonderful thing.
+      </p>
+
+      <p>
+        And now I'm sitting here wondering what you're thinking
+        after reading this whole thing. 😂💕 Whatever happens next,
+        I'm glad I found the courage to tell you how I feel.
+        You really are special to me, Ishita, and I hope we get
+        to create some beautiful memories together.
+      </p>
+
+      <p class="signature">
+        From someone who likes you a little more than he planned to 💗
+      </p>
+
+    </article>
+
+    <div class="tools">
+      <button class="tool-btn" id="letterShare">↗ Share this page</button>
+      <button class="tool-btn" id="backBtn">♡ Back to question</button>
+    </div>
+
+    <div class="letter-footer">
+      No matter what, your feelings matter too. 💌
+    </div>
+
+  </section>
+</main>
+
+<script>
+(() => {
+  const yes = document.getElementById("yes");
+  const no = document.getElementById("no");
+  const buttonArea = document.getElementById("buttonArea");
+  const questionScreen = document.getElementById("questionScreen");
+  const messageScreen = document.getElementById("messageScreen");
+  const hearts = document.getElementById("hearts");
+  const status = document.getElementById("status");
+
+  let attempts = 0;
+  let yesScale = 1;
+  let audioContext = null;
+  let musicOn = false;
+  let musicTimer = null;
+  let noteIndex = 0;
+
+  const emojis = ["💗", "💕", "💖", "💘", "🌸", "💞", "❤️"];
+
+  // Floating hearts in the background
+  function floatHeart() {
+    const heart = document.createElement("span");
+    heart.className = "heart";
+    heart.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (15 + Math.random() * 23) + "px";
+    heart.style.animationDuration = (4 + Math.random() * 5) + "s";
+
+    hearts.appendChild(heart);
+    heart.addEventListener("animationend", () => heart.remove(), {
+      once: true
+    });
+
+    setTimeout(() => heart.remove(), 10000);
+  }
+
+  setInterval(floatHeart, 550);
+
+  // Move NO to a random visible position.
+  // YES gets larger each time NO is approached.
+  function moveNo() {
+    attempts++;
+
+    yesScale = Math.min(1 + attempts * 0.13, 2.6);
+    yes.style.transform = `scale(${yesScale})`;
+
+    // Make NO fixed-position so it can move around the screen.
+    no.style.position = "fixed";
+    no.style.zIndex = "20";
+
+    const padding = 15;
+    const maxX = Math.max(
+      padding,
+      window.innerWidth - no.offsetWidth - padding
+    );
+    const maxY = Math.max(
+      padding,
+      window.innerHeight - no.offsetHeight - padding
+    );
+
+    const x = padding + Math.random() * (maxX - padding);
+    const y = padding + Math.random() * (maxY - padding);
+
+    no.style.left = x + "px";
+    no.style.top = y + "px";
+
+    status.textContent = attempts >= 3
+      ? "Hehe 🙈 That button is a little shy!"
+      : "Oops! Try again 🙈💗";
+  }
+
+  // Mouse: move away when the visitor approaches NO.
+  no.addEventListener("pointerenter", event => {
+    if (event.pointerType === "mouse") {
+      moveNo();
+    }
+  });
+
+  // Touch: move when tapped, without blocking the rest of the page.
+  no.addEventListener("touchstart", event => {
+    event.preventDefault();
+    moveNo();
+  }, { passive: false });
+
+  // Fallback for clicks and keyboard activation.
+  no.addEventListener("click", event => {
+    event.preventDefault();
+    moveNo();
+  });
+
+  // YES opens the long personal message.
+  yes.addEventListener("click", () => {
+    questionScreen.classList.add("hidden");
+    messageScreen.classList.remove("hidden");
+
+    // Restore the NO button before hiding the first screen.
+    no.style.position = "relative";
+    no.style.left = "0";
+    no.style.top = "0";
+    no.style.zIndex = "4";
+
+    window.scrollTo({ top: 0, behavior: "smooth" });
+
+    // Celebration burst
+    for (let i = 0; i < 35; i++) {
+      setTimeout(floatHeart, i * 80);
+    }
+  });
+
+  // Optional gentle synthesized melody. No audio file required.
+  const melody = [
+    523.25, 659.25, 783.99, 659.25,
+    587.33, 659.25, 523.25, 392.00,
+    440.00, 523.25, 659.25, 587.33
+  ];
+
+  function playNote(freq, when) {
+    const oscillator = audioContext.createOscillator();
+    const gain = audioContext.createGain();
+
+    oscillator.type = "sine";
+    oscillator.frequency.value = freq;
+
+    gain.gain.setValueAtTime(0.0001, when);
+    gain.gain.exponentialRampToValueAtTime(0.045, when + 0.06);
+    gain.gain.exponentialRampToValueAtTime(0.0001, when + 0.45);
+
+    oscillator.connect(gain);
+    gain.connect(audioContext.destination);
+
+    oscillator.start(when);
+    oscillator.stop(when + 0.5);
+  }
+
+  function playMelody() {
+    if (!musicOn) return;
+
+    if (audioContext.state === "suspended") {
+      audioContext.resume();
+    }
+
+    const start = audioContext.currentTime + 0.05;
+
+    for (let i = 0; i < melody.length; i++) {
+      playNote(melody[i], start + i * 0.35);
+    }
+
+    musicTimer = setTimeout(playMelody, melody.length * 350 + 300);
+  }
+
+  document.getElementById("musicBtn").addEventListener("click", async () => {
+    const button = document.getElementById("musicBtn");
+
+    try {
+      if (!audioContext) {
+        const AudioContextClass =
+          window.AudioContext || window.webkitAudioContext;
+
+        if (!AudioContextClass) {
+          status.textContent = "Music isn't supported in this browser.";
+          return;
+        }
+
+        audioContext = new AudioContextClass();
+      }
+
+      if (!musicOn) {
+        await audioContext.resume();
+        musicOn = true;
+        button.textContent = "♫ Pause music";
+        playMelody();
+      } else {
+        musicOn = false;
+        clearTimeout(musicTimer);
+        await audioContext.suspend();
+        button.textContent = "♫ Play music";
+      }
+    } catch (error) {
+      status.textContent = "Unable to play music in this browser.";
+    }
+  });
+
+  // Share the published page link
+  async function sharePage() {
+    if (window.location.protocol === "file:") {
+      status.textContent =
+        "Publish this HTML online first to share a working link.";
+      return;
+    }
+
+    const data = {
+      title: "Just for Ishita 💗",
+      text: "Hey Ishita, there's a little something for you. 💌",
+      url: window.location.href
+    };
+
+    try {
+      if (navigator.share) {
+        await navigator.share(data);
+      } else if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(window.location.href);
+        status.textContent = "Website link copied! 💗";
+      } else {
+        window.prompt("Copy this website link:", window.location.href);
+      }
+    } catch (error) {
+      if (error.name !== "AbortError") {
+        status.textContent = "Please copy the website link from your browser.";
+      }
+    }
+  }
+
+  document.getElementById("shareBtn").addEventListener("click", sharePage);
+  document.getElementById("letterShare").addEventListener("click", sharePage);
+
+  // Return to the question
+  document.getElementById("backBtn").addEventListener("click", () => {
+    messageScreen.classList.add("hidden");
+    questionScreen.classList.remove("hidden");
+
+    attempts = 0;
+    yesScale = 1;
+    yes.style.transform = "scale(1)";
+
+    no.style.position = "relative";
+    no.style.left = "0";
+    no.style.top = "0";
+
+    status.textContent = "";
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+
+  // Keep the NO button within the visible screen after resizing.
+  window.addEventListener("resize", () => {
+    if (no.style.position === "fixed") {
+      const padding = 15;
+      const x = Math.min(
+        Math.max(padding, parseFloat(no.style.left) || padding),
+        Math.max(padding, window.innerWidth - no.offsetWidth - padding)
+      );
+      const y = Math.min(
+        Math.max(padding, parseFloat(no.style.top) || padding),
+        Math.max(padding, window.innerHeight - no.offsetHeight - padding)
+      );
+
+      no.style.left = x + "px";
+      no.style.top = y + "px";
+    }
+  });
+})();
+</script>
+
+</body>
+</html>
